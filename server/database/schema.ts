@@ -10,5 +10,7 @@ export const todos = sqliteTable('todos', {
 
 export const stations = sqliteTable('stations', {
   id: integer('id').primaryKey(),
-  name: text('name').notNull()
+  code: text('code').notNull(),
+  name: text('name'),
+  address: text('address'),
 })
