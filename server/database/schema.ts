@@ -7,3 +7,8 @@ export const todos = sqliteTable('todos', {
   completed: integer('completed').notNull().default(0),
   createdAt: integer('created_at', { mode: 'timestamp' }).notNull()
 })
+
+export const stations = sqliteTable('stations', {
+  id: integer('id').primaryKey(),
+  name: text('name').notNull()
+})
