@@ -21,5 +21,14 @@ export default defineNuxtConfig({
   },
   devtools: {
     enabled: true
+  },
+  nitro: {
+    experimental: {
+      tasks: true
+    },
+    scheduledTasks: {
+      // Run `cms:update` task every minute
+      '*/5 * * * *': ['获取充电站状态']
+    }
   }
 })

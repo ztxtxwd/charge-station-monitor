@@ -121,12 +121,12 @@ const items = [[{
         <span
           class="flex-1 font-medium"
           :class="[station.completed ? 'line-through text-gray-500' : '']"
-        >{{ station.title }}</span>
+        >{{ station.stationCode }}</span>
 
-        <UToggle
+        <!-- <UToggle
           :model-value="Boolean(station.completed)"
           @update:model-value="toggleStation(station)"
-        />
+        /> -->
 
         <UButton
           color="red"
