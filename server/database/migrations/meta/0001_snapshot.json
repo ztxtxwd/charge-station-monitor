@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "073bbae1-25b2-4ef7-8417-d82c6474d7a0",
+  "id": "c464116a-3779-4f46-86bb-ea0cf8aabc8a",
   "prevId": "3169bbf9-a9f8-4d6c-b3b7-5e9a28c97af3",
   "tables": {
     "stations": {
@@ -14,9 +14,37 @@
           "notNull": true,
           "autoincrement": false
         },
+        "station_code": {
+          "name": "station_code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
         "name": {
           "name": "name",
           "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "latitude": {
+          "name": "latitude",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "longitude": {
+          "name": "longitude",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false

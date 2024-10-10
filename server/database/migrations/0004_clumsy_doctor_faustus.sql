@@ -1,1 +1,0 @@
-ALTER TABLE `stations` ADD `address` text;

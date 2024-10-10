@@ -12,29 +12,8 @@
     {
       "idx": 1,
       "version": "6",
-      "when": 1728548461553,
-      "tag": "0001_wise_pet_avengers",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "6",
-      "when": 1728581716634,
-      "tag": "0002_jazzy_nehzno",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "6",
-      "when": 1728582379942,
-      "tag": "0003_left_the_fury",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "6",
-      "when": 1728582981882,
-      "tag": "0004_clumsy_doctor_faustus",
+      "when": 1728584706824,
+      "tag": "0001_classy_blue_marvel",
       "breakpoints": true
     }
   ]

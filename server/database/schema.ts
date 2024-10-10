@@ -10,7 +10,9 @@ export const todos = sqliteTable('todos', {
 
 export const stations = sqliteTable('stations', {
   id: integer('id').primaryKey(),
-  code: text('code').notNull(),
+  stationCode: text('station_code'),
   name: text('name'),
-  address: text('address'),
+  latitude: text('latitude'),
+  longitude: text('longitude'),
+  createdAt: integer('created_at', { mode: 'timestamp' }).notNull()
 })

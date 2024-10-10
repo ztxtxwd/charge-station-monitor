@@ -19,12 +19,12 @@ async function addStation() {
     const station = await $fetch('/api/stations', {
       method: 'POST',
       body: {
-        code: newStation.value
+        stationCode: newStation.value
       }
     })
     stations.value.push(station)
     await refresh()
-    toast.add({ title: `Station "${station.code}" created.` })
+    toast.add({ title: `Station "${station.stationCode}" created.` })
     newStation.value = ''
     nextTick(() => {
       newStationInput.value?.input?.focus()
@@ -54,7 +54,7 @@ async function deleteStation(station) {
   await $fetch(`/api/stations/${station.id}`, { method: 'DELETE' })
   stations.value = stations.value.filter(s => s.id !== station.id)
   await refresh()
-  toast.add({ title: `Station "${station.code}" deleted.` })
+  toast.add({ title: `Station "${station.stationCode}" deleted.` })
 }
 
 const items = [[{
