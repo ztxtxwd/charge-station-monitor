@@ -28,17 +28,11 @@ export default defineTask({
             traceId: '24d53661-7343-44a2-9721-197438905359'
           })
         });
+        
+        await useDB().update(stations).set({ name: response.data.stationName,total:response.data.connectorInfo.fastConnectorCount, policies: JSON.stringify(response.data.policies) }).where(eq(stations.id, station.id))
 
         // 暂停5秒
         await new Promise(resolve => setTimeout(resolve, 5000));
-
-        if(station.name !== response.data.stationName) {
-          await useDB().update(stations).set({ name: response.data.stationName,total:response.data.connectorInfo.fastConnectorCount }).where(eq(stations.id, station.id))
-        }
-
-        if(station.policies !== JSON.stringify(response.data.policies)) {
-          await useDB().update(stations).set({ policies: JSON.stringify(response.data.policies) }).where(eq(stations.id, station.id))
-        }
 
         // 解析响应并存入stationStatus表
         if (response && response.data && response.data.connectorInfo) {
