@@ -14,7 +14,7 @@ export default defineTask({
       const allStations = await useDB().select().from(stations);
 
       for (const station of allStations) {
-        const response: { data: { stationName: string, connectorInfo: { fastConnectorCount: number,fastConnectorIdleCount: number } } } = await $fetch('https://chongdian-travel.17u.cn/chargeapi/query/api/station/detail', {
+        const response: { data: { policies: object[], stationName: string, connectorInfo: { fastConnectorCount: number,fastConnectorIdleCount: number } } } = await $fetch('https://chongdian-travel.17u.cn/chargeapi/query/api/station/detail', {
           method: 'POST',
           headers: {
             'x-member': '42nBCw8nodlgdhu9s3Gzj9s5RFBGxpqCh4O3L7-a9tSPtKpgP6hNQNmMJvppfL6AhXdIXX3GW4kaXt2tSYDfqLmMM_-96JxDfDA7lXbmHQTO1GjoY-yxxt6j2fAVV18Pa2',
@@ -29,8 +29,15 @@ export default defineTask({
           })
         });
 
+        // 暂停5秒
+        await new Promise(resolve => setTimeout(resolve, 5000));
+
         if(station.name !== response.data.stationName) {
           await useDB().update(stations).set({ name: response.data.stationName,total:response.data.connectorInfo.fastConnectorCount }).where(eq(stations.id, station.id))
+        }
+
+        if(station.policies !== JSON.stringify(response.data.policies)) {
+          await useDB().update(stations).set({ policies: JSON.stringify(response.data.policies) }).where(eq(stations.id, station.id))
         }
 
         // 解析响应并存入stationStatus表

@@ -15,6 +15,7 @@ export const stations = sqliteTable('stations', {
   total: integer('total'),
   latitude: text('latitude'),
   longitude: text('longitude'),
+  policies: text('policies'),
   createdAt: integer('created_at', { mode: 'timestamp' }).notNull()
 })
 
