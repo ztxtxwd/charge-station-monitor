@@ -5,6 +5,8 @@ definePageMeta({
 const loading = ref(false)
 const newStation = ref('')
 const newStationInput = ref(null)
+const isOpen = ref(false)
+const stationId = ref(0)
 
 const toast = useToast()
 const { user, clear } = useUserSession()
@@ -117,25 +119,41 @@ const items = [[{
         v-for="station of stations"
         :key="station.id"
         class="flex items-center gap-4 py-2"
+        label="Open"
+        @click="stationId = station.id; isOpen = true"
       >
         <span
-          class="flex-1 font-medium"
-          :class="[station.completed ? 'line-through text-gray-500' : '']"
-        >{{ station.stationCode }}</span>
+          class="font-medium flex-1"
+        >{{ station.name }}<UBadge color="gray" class="ml-2">{{ station.total}}</UBadge></span>
 
         <!-- <UToggle
           :model-value="Boolean(station.completed)"
           @update:model-value="toggleStation(station)"
         /> -->
+        <div class="flex items-center gap-2">
+          <UPopover :popper="{ placement: 'right-start' }" mode="hover">
+            <UButton
+              color="gray"
+              variant="soft"
+              size="2xs"
+              icon="i-heroicons-currency-dollar-20-solid"
+            />
 
-        <UButton
-          color="red"
-          variant="soft"
-          size="2xs"
-          icon="i-heroicons-x-mark-20-solid"
-          @click="deleteStation(station)"
-        />
+            <template #panel>
+              <StationPricePopover :policies="station.policies" />
+            </template>
+          </UPopover>
+
+          <!-- <UButton
+            color="red"
+            variant="soft"
+            size="2xs"
+            icon="i-heroicons-x-mark-20-solid"
+            @click="deleteStation(station)"
+          /> -->
+        </div>
       </li>
     </ul>
   </UCard>
+  <StationStatsModal v-if="stationId > 0" :station-id="stationId" v-model="isOpen" />
 </template>

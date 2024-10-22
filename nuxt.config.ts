@@ -5,7 +5,8 @@ export default defineNuxtConfig({
     '@nuxthub/core',
     '@nuxt/ui',
     'nuxt-auth-utils',
-    '@nuxt/eslint'
+    '@nuxt/eslint',
+    'nuxt-echarts',
   ],
   hub: {
     database: true
@@ -30,5 +31,19 @@ export default defineNuxtConfig({
       // Run `cms:update` task every minute
       '*/5 * * * *': ['获取充电站状态']
     }
+  },
+  echarts: {
+    // Options
+    renderer: ['canvas', 'svg'],
+    charts: ['CustomChart'],
+    components: [
+      'PolarComponent',
+      'DatasetComponent',
+      'GridComponent',
+      'TooltipComponent',
+      'ToolboxComponent',
+      'LegendComponent',
+      'VisualMapComponent'
+    ],
   }
 })
