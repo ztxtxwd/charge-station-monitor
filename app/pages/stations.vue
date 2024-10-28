@@ -118,7 +118,7 @@ const items = [[{
       <li
         v-for="station of stations"
         :key="station.id"
-        class="flex items-center gap-4 py-2"
+        class="flex items-center gap-4 py-2 cursor-pointer"
         label="Open"
         @click="stationId = station.id; isOpen = true"
       >
