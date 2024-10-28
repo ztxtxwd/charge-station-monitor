@@ -4,7 +4,7 @@ const colorMode = useColorMode()
 
 watch(loggedIn, () => {
   if (!loggedIn.value) {
-    navigateTo('/')
+    // navigateTo('/')
   }
 })
 
